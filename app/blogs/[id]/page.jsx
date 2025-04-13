@@ -39,12 +39,12 @@ const page = ({params}) => {
             <Image className='border-4 border-white' src={data.image} width={1280} hight={720} alt=''/>
             <h1 className='my-8 text-[26px] font-semibold '>Introduction:</h1>
             <p>{data.description}</p>
-            <h3 className='my-5 text-[18px] font-semibold'>{data.steps[0].title1}</h3>
-            <p className='my-3'>{data.steps[0].description1}</p>
-            <h3 className='my-5 text-[18px] font-semibold'>{data.steps[1].title2}</h3>
-            <p className='my-3'>{data.steps[1].description2}</p>
-            <h3 className='my-5 text-[18px] font-semibold'>{data.steps[2].title3}</h3>
-            <p className='my-3'>{data.steps[2].description3}</p>
+            <h3 className='my-5 text-[18px] font-semibold'>{data.steps[0].title}</h3>
+            <p className='my-3'>{data.steps[0].description}</p>
+            <h3 className='my-5 text-[18px] font-semibold'>{data.steps[1].title}</h3>
+            <p className='my-3'>{data.steps[1].description}</p>
+            <h3 className='my-5 text-[18px] font-semibold'>{data.steps[2].title}</h3>
+            <p className='my-3'>{data.steps[2].description}</p>
             <h3 className='my-5 text-[18px] font-semibold'>Conclusion:</h3>
             <p className='my-3'>{data.conclusion}</p>
             <div className='my-24'>

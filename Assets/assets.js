@@ -46,16 +46,16 @@ export const assets = {
         description:"Discover practical steps to transform your daily routine and achieve a more balanced, healthier lifestyle.",
         steps:[
       {
-        title1:"Step 1: Assess Your Current Routine",
-        description1:"Start by tracking your daily habits and identifying time-wasters and unhealthy patterns."
+        title:"Step 1: Assess Your Current Routine",
+        description:"Start by tracking your daily habits and identifying time-wasters and unhealthy patterns."
       },
       {
-        title2:"Step 2: Set Realistic Goals",
-        description2:"Establish small, achievable lifestyle goals for fitness, diet, and mental health."
+        title:"Step 2: Set Realistic Goals",
+        description:"Establish small, achievable lifestyle goals for fitness, diet, and mental health."
       },
       {
-        title3:"Step 3: Create a Personalized Plan",
-        description3:"Design a structured plan with time blocks, meal planning, and self-care breaks."
+        title:"Step 3: Create a Personalized Plan",
+        description:"Design a structured plan with time blocks, meal planning, and self-care breaks."
       }
     ],
     conclusion:"With consistent effort and mindful habits, you can build a sustainable lifestyle that promotes overall well-being.",
@@ -71,16 +71,16 @@ export const assets = {
         description:"Learn how to build a clear and actionable roadmap to bring your startup ideas to life effectively.",
          steps:[
       {
-        title1:"Step 1: Identify the Problem",
-        description1:"Pinpoint a real-world problem and validate it with potential users and market research."
+        title:"Step 1: Identify the Problem",
+        description:"Pinpoint a real-world problem and validate it with potential users and market research."
       },
       {
-        title2:"Step 2: Define a Vision and Strategy",
-        description2:"Outline your product’s mission, core features, and value proposition."
+        title:"Step 2: Define a Vision and Strategy",
+        description:"Outline your product’s mission, core features, and value proposition."
       },
       {
-        title3:"Step 3: Build a Milestone-Based Roadmap",
-        description3:"Break down your goals into MVP, beta, and launch stages with deadlines and resources."
+        title:"Step 3: Build a Milestone-Based Roadmap",
+        description:"Break down your goals into MVP, beta, and launch stages with deadlines and resources."
       }
     ],
     conclusion:"A clear roadmap helps your team stay focused and aligned, making it easier to turn your ideas into a viable product.",
@@ -96,16 +96,16 @@ export const assets = {
         description:"Explore how mastering emerging technologies can open doors to career opportunities in the software industry.",
          steps:[
       {
-        title1:"Step 1: Choose a Technology Trend",
-        description1:"Focus on in-demand fields like AI, cloud computing, DevOps, or web frameworks."
+        title:"Step 1: Choose a Technology Trend",
+        description:"Focus on in-demand fields like AI, cloud computing, DevOps, or web frameworks."
       },
       {
-        title2:"Step 2: Learn by Building Projects",
-        description2:"Apply your learning through hands-on projects and real-world applications."
+        title:"Step 2: Learn by Building Projects",
+        description:"Apply your learning through hands-on projects and real-world applications."
       },
       {
-        title3:"Step 3: Engage with the Community",
-        description3:"Join tech communities, attend webinars, and contribute to open-source projects."
+        title:"Step 3: Engage with the Community",
+        description:"Join tech communities, attend webinars, and contribute to open-source projects."
       }
     ],
     conclusion:"Continual learning and staying updated with the latest technologies will give you a competitive edge in your software career.",
@@ -121,16 +121,16 @@ export const assets = {
         description:"Get the best productivity tips to use your apps and software more efficiently in your day-to-day tasks.",
          steps:[
         {
-            title1:"Step 1: Organize your tools",
-            description1:"Group apps based on their usage and eliminate redundant ones to streamline your workflow."
+            title:"Step 1: Organize your tools",
+            description:"Group apps based on their usage and eliminate redundant ones to streamline your workflow."
         },
         {
-            title2:"Step 2: Use built-in features",
-            description2:"Explore shortcuts, integrations, and hidden functionalities that boost productivity."
+            title:"Step 2: Use built-in features",
+            description:"Explore shortcuts, integrations, and hidden functionalities that boost productivity."
         },
         {
-            title3:"Step 3: Update and optimize regularly",
-            description3:"Keep your apps up-to-date and optimize settings for better performance and experience."
+            title:"Step 3: Update and optimize regularly",
+            description:"Keep your apps up-to-date and optimize settings for better performance and experience."
         }
     ],
     conclusion:"Maximizing app efficiency is about organizing, learning features, and maintaining updates for optimal use.",
@@ -146,16 +146,16 @@ export const assets = {
         description:"Uncover ways to sharpen your skills and create lasting memories through personal growth and experiences.",
          steps:[
         {
-            title1:"Step 1: Set clear learning goals",
-            description1:"Decide on skills you want to improve and set achievable targets."
+            title:"Step 1: Set clear learning goals",
+            description:"Decide on skills you want to improve and set achievable targets."
         },
         {
-            title2:"Step 2: Practice with real-life scenarios",
-            description2:"Apply your skills in daily life or side projects to make learning fun and effective."
+            title:"Step 2: Practice with real-life scenarios",
+            description:"Apply your skills in daily life or side projects to make learning fun and effective."
         },
         {
-            title3:"Step 3: Document your journey",
-            description3:"Capture progress with photos, videos, or journals to reflect and stay motivated."
+            title:"Step 3: Document your journey",
+            description:"Capture progress with photos, videos, or journals to reflect and stay motivated."
         }
     ],
     conclusion:"Skill growth and memorable moments go hand in hand when you're intentional, hands-on, and reflective.",
@@ -171,16 +171,16 @@ export const assets = {
         description:"Understand strategies to increase profits in your startup while reducing operational costs and resource usage.",
          steps:[
         {
-            title1:"Step 1: Analyze current resource usage",
-            description1:"Track how your startup uses time, money, and materials to find areas for improvement."
+            title:"Step 1: Analyze current resource usage",
+            description:"Track how your startup uses time, money, and materials to find areas for improvement."
         },
         {
-            title2:"Step 2: Automate and outsource smartly",
-            description2:"Use automation tools and outsource repetitive tasks to focus on core business operations."
+            title:"Step 2: Automate and outsource smartly",
+            description:"Use automation tools and outsource repetitive tasks to focus on core business operations."
         },
         {
-            title3:"Step 3: Prioritize high ROI activities",
-            description3:"Identify efforts with the most impact and dedicate resources where returns are measurable."
+            title:"Step 3: Prioritize high ROI activities",
+            description:"Identify efforts with the most impact and dedicate resources where returns are measurable."
         }
     ],
     conclusion:"By staying lean, automating, and focusing on ROI, startups can scale efficiently and sustainably.",
@@ -196,16 +196,16 @@ export const assets = {
         description:"Level up your career with the latest tech trends and tools that are redefining the world of software development.",
         steps:[
         {
-            title1:"Step 1: Learn trending technologies",
-            description1:"Stay current with emerging frameworks, languages, and tools in demand."
+            title:"Step 1: Learn trending technologies",
+            description:"Stay current with emerging frameworks, languages, and tools in demand."
         },
         {
-            title2:"Step 2: Build a strong portfolio",
-            description2:"Showcase your knowledge through personal projects, GitHub contributions, and blogs."
+            title:"Step 2: Build a strong portfolio",
+            description:"Showcase your knowledge through personal projects, GitHub contributions, and blogs."
         },
         {
-            title3:"Step 3: Network and engage in tech communities",
-            description3:"Connect with developers and experts to grow and uncover opportunities."
+            title:"Step 3: Network and engage in tech communities",
+            description:"Connect with developers and experts to grow and uncover opportunities."
         }
     ],
     conclusion:"Continuous learning, showcasing skills, and networking are key to career growth in tech.",
@@ -221,16 +221,16 @@ export const assets = {
         description:"Follow a structured lifestyle plan that helps you stay organized, motivated, and focused on your goals.",
         steps:[
     {
-      title1:"Step 1: Assess Your Current Lifestyle",
-      description1:"Analyze your daily habits, routines, and health to understand where improvements are needed."
+      title:"Step 1: Assess Your Current Lifestyle",
+      description:"Analyze your daily habits, routines, and health to understand where improvements are needed."
     },
     {
-      title2:"Step 2: Set Clear and Achievable Goals",
-      description2:"Define short- and long-term goals that align with your values and desired lifestyle."
+      title:"Step 2: Set Clear and Achievable Goals",
+      description:"Define short- and long-term goals that align with your values and desired lifestyle."
     },
     {
-      title3:"Step 3: Build Healthy Habits Gradually",
-      description3:"Introduce one positive change at a time to ensure lasting improvements without overwhelm."
+      title:"Step 3: Build Healthy Habits Gradually",
+      description:"Introduce one positive change at a time to ensure lasting improvements without overwhelm."
     }
   ],
   conclusion:"By following a structured lifestyle roadmap, you can take consistent, meaningful steps toward a healthier, more fulfilling life.",
@@ -246,16 +246,16 @@ export const assets = {
         description:"Discover how to optimize limited resources for maximum impact and sustainability in business ventures.",
         steps:[
     {
-      title1:"Step 1: Identify Core Value Propositions",
-      description1:"Focus on what truly delivers value to your customers and double down on those offerings."
+      title:"Step 1: Identify Core Value Propositions",
+      description:"Focus on what truly delivers value to your customers and double down on those offerings."
     },
     {
-      title2:"Step 2: Use Lean Methodologies",
-      description2:"Adopt lean business strategies to cut unnecessary expenses and streamline operations."
+      title:"Step 2: Use Lean Methodologies",
+      description:"Adopt lean business strategies to cut unnecessary expenses and streamline operations."
     },
     {
-      title3:"Step 3: Automate and Outsource Wisely",
-      description3:"Utilize automation tools and outsource non-core tasks to increase efficiency with less effort."
+      title:"Step 3: Automate and Outsource Wisely",
+      description:"Utilize automation tools and outsource non-core tasks to increase efficiency with less effort."
     }
   ],
   conclusion:"With smart planning and strategic action, it's possible to achieve high returns without stretching your resources thin.",
@@ -271,16 +271,16 @@ export const assets = {
         description:"Explore how to elevate your everyday life into something extraordinary with purpose-driven lifestyle choices.",
         steps:[
     {
-      title1:"Step 1: Define What 'Exceptional' Means to You",
-      description1:"Determine your own values and what a fulfilling life looks like for you personally."
+      title:"Step 1: Define What 'Exceptional' Means to You",
+      description:"Determine your own values and what a fulfilling life looks like for you personally."
     },
     {
-      title2:"Step 2: Cultivate Purposeful Routines",
-      description2:"Incorporate habits that support your growth, joy, and well-being into daily life."
+      title:"Step 2: Cultivate Purposeful Routines",
+      description:"Incorporate habits that support your growth, joy, and well-being into daily life."
     },
     {
-      title3:"Step 3: Invest in Experiences Over Things",
-      description3:"Prioritize meaningful experiences that enrich your life and create lasting memories."
+      title:"Step 3: Invest in Experiences Over Things",
+      description:"Prioritize meaningful experiences that enrich your life and create lasting memories."
     }
   ],
   conclusion:"An exceptional lifestyle is within reach when you live intentionally and align your actions with what truly matters to you.",
@@ -296,16 +296,16 @@ export const assets = {
         description:"Dive into the critical factors that separate successful startups from the rest in the ever-evolving tech world.",
         steps:[
     {
-      title1:"Step 1: Validate the Problem Early",
-      description1:"Make sure there’s a real market need for your product by researching and validating ideas before building."
+      title:"Step 1: Validate the Problem Early",
+      description:"Make sure there’s a real market need for your product by researching and validating ideas before building."
     },
     {
-      title2:"Step 2: Build a Strong Founding Team",
-      description2:"Surround yourself with skilled, passionate individuals who complement each other’s strengths."
+      title:"Step 2: Build a Strong Founding Team",
+      description:"Surround yourself with skilled, passionate individuals who complement each other’s strengths."
     },
     {
-      title3:"Step 3: Focus on Iteration and Feedback",
-      description3:"Launch quickly, learn from users, and iterate fast to stay relevant and competitive."
+      title:"Step 3: Focus on Iteration and Feedback",
+      description:"Launch quickly, learn from users, and iterate fast to stay relevant and competitive."
     }
   ],
   conclusion:"Tech startups that succeed do so by solving real problems, moving fast, and fostering a culture of adaptability and innovation.",
@@ -321,16 +321,16 @@ export const assets = {
         description:"A complete breakdown of how to design and launch a powerful and user-friendly online learning platform.",
         steps:[
     {
-      title1:"Step 1: Define Your Target Learners",
-      description1:"Understand who your platform is for and tailor the content and design to their needs."
+      title:"Step 1: Define Your Target Learners",
+      description:"Understand who your platform is for and tailor the content and design to their needs."
     },
     {
-      title2:"Step 2: Choose Scalable Technology",
-      description2:"Select robust tools and frameworks that allow for future growth and flexibility."
+      title:"Step 2: Choose Scalable Technology",
+      description:"Select robust tools and frameworks that allow for future growth and flexibility."
     },
     {
-      title3:"Step 3: Prioritize UX and Engagement",
-      description3:"Design with intuitive navigation and include interactive features to keep users motivated."
+      title:"Step 3: Prioritize UX and Engagement",
+      description:"Design with intuitive navigation and include interactive features to keep users motivated."
     }
   ],
   conclusion:"A well-designed learning platform balances functionality, engagement, and user focus to deliver lasting educational impact.",
@@ -346,16 +346,16 @@ export const assets = {
         description:"Unravel the future of AI with groundbreaking algorithms set to revolutionize industries worldwide.",
         steps:[
     {
-      title1:"Step 1: Study Emerging AI Trends",
-      description1:"Stay informed about advancements in neural networks, transformers, and generative models."
+      title:"Step 1: Study Emerging AI Trends",
+      description:"Stay informed about advancements in neural networks, transformers, and generative models."
     },
     {
-      title2:"Step 2: Gain Hands-on Experience with AI Tools",
-      description2:"Experiment with platforms like TensorFlow, PyTorch, and OpenAI APIs to build real-world models."
+      title:"Step 2: Gain Hands-on Experience with AI Tools",
+      description:"Experiment with platforms like TensorFlow, PyTorch, and OpenAI APIs to build real-world models."
     },
     {
-      title3:"Step 3: Contribute to Open Source or Research",
-      description3:"Collaborate in AI communities and contribute to innovative projects to deepen your understanding."
+      title:"Step 3: Contribute to Open Source or Research",
+      description:"Collaborate in AI communities and contribute to innovative projects to deepen your understanding."
     }
   ],
       conclusion:"The future of AI lies in creative, ethical, and impactful algorithms that redefine how we live, work, and connect.",
@@ -371,16 +371,16 @@ export const assets = {
         description:"Learn how to enjoy a harmonious lifestyle by balancing personal goals with self-care and modern aesthetics.",
         steps:[
     {
-      title1:"Step 1: Prioritize Self-Care",
-      description1:"Incorporate physical, mental, and emotional well-being into your daily schedule."
+      title:"Step 1: Prioritize Self-Care",
+      description:"Incorporate physical, mental, and emotional well-being into your daily schedule."
     },
     {
-      title2:"Step 2: Align Aesthetics with Function",
-      description2:"Create a lifestyle environment that looks good and feels supportive to your goals."
+      title:"Step 2: Align Aesthetics with Function",
+      description:"Create a lifestyle environment that looks good and feels supportive to your goals."
     },
     {
-      title3:"Step 3: Set Boundaries and Stay Intentional",
-      description3:"Be mindful of your commitments and focus on what truly brings value and joy."
+      title:"Step 3: Set Boundaries and Stay Intentional",
+      description:"Be mindful of your commitments and focus on what truly brings value and joy."
     }
   ],
     conclusion:"A stylish yet grounded lifestyle is all about living intentionally and embracing balance in every aspect of your journey.",
@@ -396,16 +396,16 @@ export const assets = {
         description:"Take a deep dive into how social networks are evolving and what the future holds for digital communities.",
         steps:[
     {
-      title1:"Step 1: Study Current Social Media Trends",
-      description1:"Analyze features like short videos, creator monetization, and community-first platforms."
+      title:"Step 1: Study Current Social Media Trends",
+      description:"Analyze features like short videos, creator monetization, and community-first platforms."
     },
     {
-      title2:"Step 2: Understand Decentralized Networking",
-      description2:"Explore blockchain-based social networks and how they shift control back to users."
+      title:"Step 2: Understand Decentralized Networking",
+      description:"Explore blockchain-based social networks and how they shift control back to users."
     },
     {
-      title3:"Step 3: Engage in Future-focused Platforms",
-      description3:"Get involved in platforms exploring AR, VR, and the metaverse for next-gen interactions."
+      title:"Step 3: Engage in Future-focused Platforms",
+      description:"Get involved in platforms exploring AR, VR, and the metaverse for next-gen interactions."
     }
   ],
    conclusion:"The future of social networking will be more immersive, personalized, and decentralized, reshaping how we connect and communicate.",
@@ -421,16 +421,16 @@ export const assets = {
         description:"Explore the next wave of startup innovations and what it means for the global entrepreneurial ecosystem.",
         steps:[
     {
-      title1:"Step 1: Understand Global Startup Hubs",
-      description1:"Study how ecosystems in regions like Silicon Valley, Berlin, and Bangalore drive innovation."
+      title:"Step 1: Understand Global Startup Hubs",
+      description:"Study how ecosystems in regions like Silicon Valley, Berlin, and Bangalore drive innovation."
     },
     {
-      title2:"Step 2: Foster Collaborative Communities",
-      description2:"Encourage knowledge sharing, mentorship, and funding opportunities within local networks."
+      title:"Step 2: Foster Collaborative Communities",
+      description:"Encourage knowledge sharing, mentorship, and funding opportunities within local networks."
     },
     {
-      title3:"Step 3: Embrace Tech and Sustainability",
-      description3:"Integrate sustainable tech and green practices to future-proof startup initiatives."
+      title:"Step 3: Embrace Tech and Sustainability",
+      description:"Integrate sustainable tech and green practices to future-proof startup initiatives."
     }
   ],
        conclusion:"The global startup ecosystem thrives on collaboration, innovation, and sustainability—elements that will define its future evolution.",
