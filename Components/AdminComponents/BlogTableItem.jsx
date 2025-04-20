@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const BlogTableItem = ({authorImg,title,author,date,confirmDeleteBlog,mongoId}) => {
@@ -16,6 +17,10 @@ const BlogTableItem = ({authorImg,title,author,date,confirmDeleteBlog,mongoId}) 
             </td>
             <td className='px-6 py-4'>
                 {BlogDate.toDateString()}
+
+            </td>
+            <td  className='px-6 py-4 cursor-pointer'>
+               <Link href={`/admin/updateProduct/${mongoId}`}> <button>Edit</button></Link>
 
             </td>
             <td onClick={()=>confirmDeleteBlog(mongoId)} className='px-6 py-4 cursor-pointer'>
