@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import { assets } from '@/Assets/assets';
 import axios from 'axios';
 import Image from 'next/image';

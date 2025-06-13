@@ -1,12 +1,15 @@
-"use client"
+'use client'
+
 import React from 'react';
+import { Suspense } from 'react';
 import RegisterForm from './components/RegisterForm';
+export const dynamic = 'force-dynamic';
 
 const page = () => {
     return (
-        <div>
+        <Suspense fallback={<div>Loading form...</div>}>
            <RegisterForm/> 
-        </div>
+        </Suspense>
     );
 };
 

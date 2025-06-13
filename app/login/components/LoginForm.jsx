@@ -10,6 +10,7 @@ import { useSearchParams } from "next/navigation";
 const LoginForm = () => {
     // const router = useRouter();
     const searchParams = useSearchParams();
+    const error = searchParams.get('error');
   const callbackUrl = searchParams.get("callbackUrl") || "/";
     const [formData, setFormData] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
@@ -100,7 +101,7 @@ const LoginForm = () => {
               </Link>
             </h3>
           </div>
-          
+          {error && <p className="text-red-500">Login failed: {error}</p>}
           <SocialLogin></SocialLogin>
 
           

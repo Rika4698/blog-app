@@ -23,7 +23,7 @@ export async function POST(req){
         if(!isPasswordValid){
             return NextResponse.json({error:"Invalid credentials"}, {status:401});
         }
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "9d" });
 
         const response = NextResponse.json ({message:"Login Successful"});
         response.cookies.set('token',token, {
