@@ -2,6 +2,8 @@ import { ConnectDB } from "@/lib/config/db"
 import {  NextResponse } from "next/server";
 import {writeFile, unlink } from 'fs/promises'
 import BlogModel from "@/lib/models/BlogModel";
+import { authOptions } from "../auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
 
 const fs = require('fs/promises')
 
@@ -14,19 +16,29 @@ LoadDB();
 //API Endpoint to get all blogs
 export async function GET(request){
 
-    const blogId = request.nextUrl.searchParams.get("id");
+  
+  
+
+  const blogId = request.nextUrl.searchParams.get("id");
+
+  try {
+    if (blogId) {
+      const blog = await BlogModel.findById(blogId);
+      return NextResponse.json(blog);
+    } else {
+      const blogs = await BlogModel.find({});
+      return NextResponse.json({ blogs });
+    }
+  } catch (error) {
+    return NextResponse.json({ message: "Error fetching blog" }, { status: 500 });
+  }
+
     
-    if(blogId){
-        const blog = await BlogModel.findById(blogId);
-        return NextResponse.json(blog);
-    }
-    else{
-        const blogs = await BlogModel.find({});
-        return NextResponse.json({blogs})
-    }
 
     
 };
+
+
 
 
 //API Endpoint For Uploading Blogs

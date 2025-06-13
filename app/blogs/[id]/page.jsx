@@ -6,26 +6,57 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { React, useEffect, useState } from 'react';
 
-const page = ({ params }) => {
-    const [data, setData] = useState(null);
+import { useParams, useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
-    const fetchBlogData = async () => {
+
+
+
+const page = () => {
+   const { id } = useParams();
+  const router = useRouter();
+  const { data: session, status } = useSession();
+
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+
+  // Redirect to login if user is unauthenticated
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      const currentPath = window.location.pathname;
+      router.push(`/login?callbackUrl=${currentPath}`);
+      
+    }
+  }, [status, router]);
+
+  // Fetch blog data after session is authenticated
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
         const response = await axios.get('/api/blog', {
-            params: {
-                id: params.id
-            }
-        })
+          params: { id },
+        });
         setData(response.data);
-        console.log(response.data);
-
+      } catch (err) {
+        setError('Blog not found or error loading blog.');
+      }
     };
 
+    if (status === 'authenticated' && id) {
+      fetchData();
+    }
+  }, [status, id]);
 
-    useEffect(() => {
-        fetchBlogData();
-    }, [params.id])
+  if (status === 'loading' || (status === 'authenticated' && !data && !error)) {
+    return <div className="text-center py-20 text-lg">Loading blog...</div>;
+  }
 
-    return (data ? <>
+  if (error) {
+    return <div className="text-center py-20 text-red-600">{error}</div>;
+  }
+
+
+    return  <>
         <div className='bg-gray-200 py-5 px-5 md:px-12 lg:px-28'>
             <div className='flex justify-between items-center'>
                 <Link href={'/'}>
@@ -69,8 +100,8 @@ const page = ({ params }) => {
 
         </div>
         <Footer />
-    </> : <></>
-    );
+    </> 
+   
 };
 
 export default page;
