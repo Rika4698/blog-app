@@ -2,8 +2,8 @@ import { ConnectDB } from "@/lib/config/db"
 import {  NextResponse } from "next/server";
 import {writeFile, unlink } from 'fs/promises'
 import BlogModel from "@/lib/models/BlogModel";
-import { authOptions } from "../auth/[...nextauth]/route";
-import { getServerSession } from "next-auth";
+// import { authOptions } from "../auth/[...nextauth]/route";
+// import { getServerSession } from "next-auth";
 
 const fs = require('fs/promises')
 
