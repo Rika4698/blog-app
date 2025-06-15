@@ -56,7 +56,7 @@ const Header = () => {
             src={assets.logo}
             width={180}
             alt='Logo'
-            className='w-[130px] sm:w-auto'
+            className='w-[130px] sm:w-[150px]'
           />
         </Link>
 

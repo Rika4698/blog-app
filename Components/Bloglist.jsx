@@ -1,7 +1,8 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import BlogItem from './BlogItem';
 import { useGetBlogsQuery } from '../store/blogAPI';
+import Link from 'next/link';
 
 const Bloglist = () => {
     const [menu, setMenu]= useState("Technology");
@@ -44,9 +45,9 @@ const Bloglist = () => {
             </div>
 
             <div className="text-center">
-        <a href="/all-blogs" className="text-blue-600">
+        <Link href="/allBlogs" className="text-blue-600">
           See All Blogs
-        </a>
+        </Link>
       </div>
 
         </div>
