@@ -15,7 +15,7 @@ const Bloglist = () => {
         return <p className='text-center text-red-500'>Failed to load blogs</p>;
 
     const blogs = data?.blogs || [];
-   console.log(blogs);
+
     const filltered = blogs.filter(blog => blog.category === menu).slice(0, 4);
 
     // const fetchBlogs = async () =>{

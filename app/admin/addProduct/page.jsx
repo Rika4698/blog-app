@@ -1,11 +1,19 @@
 'use client'
 import { assets } from '@/Assets/assets';
-import axios from 'axios';
+
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-
+import { useSession } from "next-auth/react";
+import { useCreateBlogMutation } from "../../../store/blogAPI";
+import { generateGeminiField } from "../../../lib/utils/geminiHelpers";
 const page = () => {
+    const { data: session } = useSession();
+
+console.log(session?.user?.email); // user's email
+console.log(session?.user?.image); // user's profile imag
+
+const [createBlog] = useCreateBlogMutation();
     const [image, setImage] = useState(false);
     const [authorImg, setAuthorImg] = useState(false);
 
@@ -24,12 +32,27 @@ const page = () => {
 
     })
 
+    const[topic, setTopic] = useState('');
+
     const onChangeHandler = (event) => {
         const name = event.target.name;
         const value = event.target.value;
         setData(data => ({ ...data, [name]: value }));
         console.log(data);
     }
+
+   const handleGenerate = async (type) => {
+  if (!topic)
+    return toast.error("Please enter a topic first!");
+  try {
+    const result = await generateGeminiField(type, topic);
+    setData((prev) => ({ ...prev, [type]: result }));
+    toast.success(`${type} generated!`);
+  } catch (err) {
+    toast.error("Generation failed");
+  }
+};
+
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
@@ -45,13 +68,15 @@ const page = () => {
         formData.append('conclusion', data.conclusion);
         formData.append('category', data.category);
         formData.append('author', data.author);
+        formData.append("userEmail", session?.user?.email);
+        formData.append("userImage", session?.user?.image);
         formData.append('authorImg', authorImg);
         formData.append('image', image);
 
-        const response = await axios.post('/api/blog', formData);
-        if (response.data.success) {
-            toast.success(response.data.msg);
-            setImage(false);
+        try{
+            const res = await createBlog(formData).unwrap();
+            toast.success("Blog created!");
+             setImage(false);
             setAuthorImg(false);
             setData({
                 title: "",
@@ -66,27 +91,135 @@ const page = () => {
                 category: "Startup",
                 author: ""
             });
+            setTopic("");
+        } catch(err){
+            console.log(err);
+            toast.error("Failed to create blog");
         }
-        else {
-            toast.error("Error");
-        }
-    }
+    };
+
+        // const response = await axios.post('/api/blog', formData);
+        // if (response.data.success) {
+        //     toast.success(response.data.msg);
+        //     setImage(false);
+        //     setAuthorImg(false);
+        //     setData({
+        //         title: "",
+        //         description: "",
+        //         stepTitle1: "",
+        //         stepDesc1: "",
+        //         stepTitle2: "",
+        //         stepDesc2: "",
+        //         stepTitle3: "",
+        //         stepDesc3: "",
+        //         conclusion: "",
+        //         category: "Startup",
+        //         author: ""
+        //     });
+        // }
+        // else {
+        //     toast.error("Error");
+        // }
+    
     return (
         <>
-            <form onSubmit={onSubmitHandler} className='pt-5 px-5 sm:pt-12 sm:pl-16'>
-                <p className='text-xl'>Upload thumbnail</p>
-                <label htmlFor="image">
-                    <Image className='mt-4' src={!image ? assets.upload_area : URL.createObjectURL(image)} width={140} height={70} alt='' />
-                </label>
-                <input onChange={(e) => setImage(e.target.files[0])} type="file" id='image' hidden required />
+        
+        <h3 className='text-center text-4xl mt-4  font-semibold '>Create Blog</h3>
+        <div className='flex justify-center items-center mt-7'>
+            <form onSubmit={onSubmitHandler} className='pt-5 px-5 sm:pt-12 sm:pl-16  w-full max-w-2xl'>
+                <p className="text-xl">Blog Topic <span className='text-blue-700'>(for AI)</span></p>
+      <input
+        value={topic}
+        onChange={(e) => setTopic(e.target.value)}
+        className="w-full sm:w-[500px] mt-2 px-4 py-2 border"
+        placeholder="E.g. How to Start a Business"
+      />
+                <p className='text-xl mt-4'>Upload thumbnail</p>
+               <label htmlFor="image" className="inline-block w-fit">
+  <Image
+    className="mt-4 cursor-pointer"
+    src={!image ? assets.upload_area : URL.createObjectURL(image)}
+    width={140}
+    height={70}
+    alt=""
+  />
+</label>
 
-                <p className='text-xl mt-4'>Blog Title</p>
+<input
+  onChange={(e) => setImage(e.target.files[0])}
+  type="file"
+  id="image"
+  hidden
+  required
+/>
+
+                  {/* Title */}
+      <div className="mt-4">
+        <p className="text-xl">Blog Title</p>
+        <div className="flex gap-2">
+          <input
+            name="title"
+            value={data.title}
+            onChange={onChangeHandler}
+            className="w-full sm:w-[500px] mt-2 px-4 py-2 border"
+            placeholder="Enter title" required
+          />
+          <button type="button" onClick={() => handleGenerate("title")} className="h-10 w-10 rounded-full bg-blue-600 text-white text-lg cursor-pointer ">
+            AI
+          </button>
+        </div>
+      </div>
+
+
+       {/* Description */}
+      <div className="mt-4">
+        <p className="text-xl">Blog Description</p>
+        <div className="flex gap-2">
+          <textarea
+            name="description"
+            type="text" 
+            value={data.description}
+            onChange={onChangeHandler}
+            className="w-full sm:w-[500px] mt-2 px-4 py-2 border"
+            placeholder="Write short description" 
+            rows={4} required
+          />
+          <button type="button" onClick={() => handleGenerate("description")} className=" rounded-full  bg-blue-600 text-white text-lg cursor-pointer h-10 w-10">
+            AI
+          </button>
+        </div>
+      </div>
+
+                {/* <p className='text-xl mt-4'>Blog Title</p>
                 <input name='title' onChange={onChangeHandler} value={data.title} className='w-full sm:w-[500px] mt-4 px-4 py-3 border' type="text" placeholder='Type here' required />
 
                 <p className='text-xl mt-4'>Blog Description</p>
-                <textarea name="description" onChange={onChangeHandler} value={data.description} className='w-full sm:w-[500px] mt-4 px-4 py-3 border' type="text" placeholder='Write content here' rows={5} required />
+                <textarea name="description" onChange={onChangeHandler} value={data.description} className='w-full sm:w-[500px] mt-4 px-4 py-3 border' type="text" placeholder='Write content here' rows={5} required /> */}
 
-                <p className='text-xl mt-4'>Description Step 1</p>
+  {[1, 2, 3].map((i) => (
+        <div key={i}>
+          <p className="text-xl mt-4">Step {i} Title</p>
+          <input
+            name={`stepTitle${i}`}
+            type="text"
+            value={data[`stepTitle${i}`]}
+            onChange={onChangeHandler}
+            className="w-full sm:w-[500px] mt-4 px-4 py-2 border"
+            placeholder={`Step ${i} Title`} required
+          />
+          <p className="text-xl mt-4">Step {i} Description</p>
+          <textarea
+            name={`stepDesc${i}`}
+            type="text"
+            value={data[`stepDesc${i}`]}
+            onChange={onChangeHandler}
+            className="w-full sm:w-[500px] mt-2 px-4 py-2 border"
+            rows={4}
+            placeholder={`Step ${i} Description`} required
+          />
+        </div>
+      ))}
+                {/* <p className='text-xl mt-4'>Description Step 1</p>
                 <input name="stepTitle1" onChange={onChangeHandler} value={data.stepTitle1} className='w-full sm:w-[500px] mt-4 px-4 py-3 border' type="text" placeholder='Step 1 Title' required />
                 <textarea name="stepDesc1" onChange={onChangeHandler} value={data.stepDesc1} className='w-full sm:w-[500px] mt-4 px-4 py-3 border' type="text" placeholder='Step 1 Description' rows={4} required />
 
@@ -96,10 +229,29 @@ const page = () => {
 
                 <p className='text-xl mt-4'>Description Step 3</p>
                 <input name="stepTitle3" onChange={onChangeHandler} value={data.stepTitle3} className='w-full sm:w-[500px] mt-4 px-4 py-3 border' type="text" placeholder='Step 3 Title' required />
-                <textarea name="stepDesc3" onChange={onChangeHandler} value={data.stepDesc3} className='w-full sm:w-[500px] mt-4 px-4 py-3 border' type="text" placeholder='Step 3 Description' rows={4} required />
+                <textarea name="stepDesc3" onChange={onChangeHandler} value={data.stepDesc3} className='w-full sm:w-[500px] mt-4 px-4 py-3 border' type="text" placeholder='Step 3 Description' rows={4} required /> */}
 
-                <p className='text-xl mt-4'>Blog Conclusion</p>
-                <textarea name="conclusion" onChange={onChangeHandler} value={data.conclusion} className='w-full sm:w-[500px] mt-4 px-4 py-3 border' type="text" placeholder='Write content here' rows={3} required />
+                  {/* Conclusion */}
+      <div className="mt-4">
+        <p className="text-xl">Blog Conclusion</p>
+        <div className="flex gap-2">
+          <textarea
+            name="conclusion"
+            type="text"
+            value={data.conclusion}
+            onChange={onChangeHandler}
+            className="w-full sm:w-[500px] mt-2 px-4 py-2 border"
+            rows={4}
+            placeholder="Write conclusion" required
+          />
+          <button type="button" onClick={() => handleGenerate("conclusion")} className="rounded-full  bg-blue-600 text-white text-lg cursor-pointer h-10 w-10">
+            AI
+          </button>
+        </div>
+      </div>
+
+                {/* <p className='text-xl mt-4'>Blog Conclusion</p>
+                <textarea name="conclusion" onChange={onChangeHandler} value={data.conclusion} className='w-full sm:w-[500px] mt-4 px-4 py-3 border' type="text" placeholder='Write content here' rows={3} required /> */}
 
                 <p className='text-xl mt-4'>Blog Category</p>
                 <select name="category" onChange={onChangeHandler} value={data.category} className='w-40 mt-4 px-4 py-3 border text-gray-800'>
@@ -113,14 +265,15 @@ const page = () => {
 
 
                 <p className='text-xl mt-4'>Author image</p>
-                <label htmlFor="authorImg">
-                    <Image className='mt-4' src={!authorImg ? assets.upload_area : URL.createObjectURL(authorImg)} width={140} height={70} alt='' />
+                <label htmlFor="authorImg" className='inline-block w-fit'>
+                    <Image className='mt-4 cursor-pointer' src={!authorImg ? assets.upload_area : URL.createObjectURL(authorImg)} width={140} height={70} alt='' />
                 </label>
                 <input onChange={(e) => setAuthorImg(e.target.files[0])} type="file" id='authorImg' hidden required />
                 <br />
                 <button type='submit' className='my-8 w-40 h-12 bg-black text-white'>ADD</button>
 
             </form>
+            </div>
         </>
     );
 };

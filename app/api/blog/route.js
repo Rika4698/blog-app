@@ -83,6 +83,8 @@ const blogData = {
     conclusion:`${formData.get('conclusion')}`,
     category:`${formData.get('category')}`,
     author:`${formData.get('author')}`,
+    userEmail:`${formData.get('userEmail')}`,
+    userImage:`${formData.get('userImage')}`,
     image:imgUrl,
     authorImg:authorImgUrl
 };

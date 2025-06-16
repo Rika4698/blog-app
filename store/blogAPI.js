@@ -7,14 +7,14 @@ export const blogApi = createApi({
   endpoints: (builder) => ({
     // GET All or Single
     getBlogs: builder.query({
-      query: (id) => id ? `/blogs?id=${id}` : '/blog',
+      query: (id) => id ? `/blog?id=${id}` : '/blog',
       providesTags: ['Blog'],
     }),
 
     // CREATE (with formData)
     createBlog: builder.mutation({
       query: (formData) => ({
-        url: '/blogs',
+        url: '/blog',
         method: 'POST',
         body: formData,
       }),
