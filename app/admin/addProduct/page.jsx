@@ -219,17 +219,7 @@ const [createBlog] = useCreateBlogMutation();
           />
         </div>
       ))}
-                {/* <p className='text-xl mt-4'>Description Step 1</p>
-                <input name="stepTitle1" onChange={onChangeHandler} value={data.stepTitle1} className='w-full sm:w-[500px] mt-4 px-4 py-3 border' type="text" placeholder='Step 1 Title' required />
-                <textarea name="stepDesc1" onChange={onChangeHandler} value={data.stepDesc1} className='w-full sm:w-[500px] mt-4 px-4 py-3 border' type="text" placeholder='Step 1 Description' rows={4} required />
-
-                <p className='text-xl mt-4'>Description Step 2</p>
-                <input name="stepTitle2" onChange={onChangeHandler} value={data.stepTitle2} className='w-full sm:w-[500px] mt-4 px-4 py-3 border' type="text" placeholder='Step 2 Title' required />
-                <textarea name="stepDesc2" onChange={onChangeHandler} value={data.stepDesc2} className='w-full sm:w-[500px] mt-4 px-4 py-3 border' type="text" placeholder='Step 2 Description' rows={4} required />
-
-                <p className='text-xl mt-4'>Description Step 3</p>
-                <input name="stepTitle3" onChange={onChangeHandler} value={data.stepTitle3} className='w-full sm:w-[500px] mt-4 px-4 py-3 border' type="text" placeholder='Step 3 Title' required />
-                <textarea name="stepDesc3" onChange={onChangeHandler} value={data.stepDesc3} className='w-full sm:w-[500px] mt-4 px-4 py-3 border' type="text" placeholder='Step 3 Description' rows={4} required /> */}
+           
 
                   {/* Conclusion */}
       <div className="mt-4">
@@ -250,8 +240,7 @@ const [createBlog] = useCreateBlogMutation();
         </div>
       </div>
 
-                {/* <p className='text-xl mt-4'>Blog Conclusion</p>
-                <textarea name="conclusion" onChange={onChangeHandler} value={data.conclusion} className='w-full sm:w-[500px] mt-4 px-4 py-3 border' type="text" placeholder='Write content here' rows={3} required /> */}
+              
 
                 <p className='text-xl mt-4'>Blog Category</p>
                 <select name="category" onChange={onChangeHandler} value={data.category} className='w-40 mt-4 px-4 py-3 border text-gray-800'>

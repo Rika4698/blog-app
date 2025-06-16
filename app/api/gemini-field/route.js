@@ -2,8 +2,6 @@ export async function POST(request) {
   try {
     const { type, topic } = await request.json();
 
-    // console.log("👉 Type:", type);
-    // console.log("👉 Topic:", topic);
 
     const promptMap = {
       title: `Generate a blog title (max 6 words, no punctuation or quotes or special case) based on this topic: "${topic}"`,
@@ -12,10 +10,10 @@ export async function POST(request) {
     };
 
     const prompt = promptMap[type];
-    // console.log("👉 Prompt:", prompt);
+    
 
     const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
-    // console.log("👉 Gemini API KEY:", apiKey); // Don't show this in production
+    
 
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
