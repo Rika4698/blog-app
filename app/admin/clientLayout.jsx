@@ -64,7 +64,7 @@ export default function ClientLayout({ children, session }) {
             {isDropdownOpen && (
               <div
                 id="dropdownMenu"
-                className="z-50 absolute right-4 top-[125px] bg-white divide-y divide-gray-100 rounded-lg shadow-lg shadow-slate-600 drop-shadow-lg dark:bg-gray-700 dark:divide-gray-200"
+                className="z-50 absolute right-4 top-[125px] lg:top-[67px] bg-white divide-y divide-gray-100 rounded-lg shadow-lg shadow-slate-600 drop-shadow-lg dark:bg-gray-700 dark:divide-gray-200"
               >
                 <div className="px-4 py-3">
                   <span className="block text-base xl:text-lg font-bold text-gray-900 dark:text-white">

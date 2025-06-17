@@ -1,18 +1,36 @@
 'use client'
 import BlogTableItem from '@/Components/AdminComponents/BlogTableItem';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+
+import React from 'react';
 import { toast } from 'react-toastify';
+import { useSession } from "next-auth/react";
+import { useGetBlogsQuery } from '../../../store/blogAPI';
+import { useDeleteBlogMutation } from '../../../store/blogAPI';
     
 
 const page = () => {
       
-    const [blogs,setBlogs] = useState([]);
+    
+     const { data: session } = useSession();
+    const { data, error, isLoading } = useGetBlogsQuery();
+    const [deleteBlogRequest] = useDeleteBlogMutation();
 
-    const fetchBlogs = async () =>{
-        const response = await axios.get('/api/blog');
-        setBlogs(response.data.blogs)
-    }
+    // console.log("✅ Raw Data from API:", data);
+    // console.log("🧑 Logged-in User Email:", session?.user?.email);
+
+    if (isLoading) return <p className='text-center mt-10'>Loading blogs....</p>;
+    if (error) return <p className='text-center text-red-500'>Failed to load blogs</p>;
+
+    // ✅ Support both object or array response
+    const blogs = Array.isArray(data) ? data : data?.blogs || [];
+
+    // ✅ Filter by current user's email (safe fallback)
+    const filtered = session?.user?.email
+        ? blogs?.filter(blog => blog?.userEmail === session.user.email)
+        : [];
+
+        console.log('data',blogs);
+
 
     const confirmDeleteBlog = (mongoId) => {
         toast(
@@ -41,38 +59,34 @@ const page = () => {
         );
       };
     
-    
     const deleteBlog = async (mongoId, closeToast) => {
-        try {
-        const response = await axios.delete('/api/blog',{
-            params:{
-                id:mongoId 
-            }
-        })
-
-        toast.success(response.data.msg);
-        fetchBlogs();
-    } catch (error) {
-        toast.error("Failed to delete the blog.");
-      } finally {
-        closeToast();
-      }
-    };
+  try {
+    const res = await deleteBlogRequest(mongoId).unwrap();
+    toast.success(res.msg || "Blog deleted successfully");
+  } catch (error) {
+    toast.error("Failed to delete the blog.");
+  } finally {
+    closeToast();
+  }
+};
     
-    useEffect(()=>{
-        fetchBlogs();
+    
+    // useEffect(()=>{ useDeleteBlogMutation
+    //     fetchBlogs();
 
-    },[])
+    // },[])
 
 
     return (
-        <div className='flex-1 pt-5 px-5 sm:pt-12 sm:pl-12'>
-            <h1>All blogs</h1>
-            <div className='relative h-[80vh] max-w-[850px] overflow-x-auto mt-4 border border-gray-400 scrollbar-hide'>
+      <div>
+        <h2 className='text-center text-2xl font-semibold'>My All Blogs</h2>
+        <div className='flex-1 pt-5 px-3  sm:pl-12'>
+            <h1>All blogs: {filtered.length}</h1>
+            <div className='relative h-[80vh] max-w-[850px] overflow-auto mt-4 border border-gray-400 scrollbar-hide'>
                 <table className='w-full text-sm text-gray-500'>
                     <thead className='text-sm text-gray-700 text-left uppercase bg-gray-50'>
                         <tr>
-                            <th scope='col' className='hidden sm:block px-6 py-3'>
+                            <th scope='col' className='px-6 py-3'>
                                 Author name
                             </th>
                             <th scope='col' className=' px-6 py-3'>
@@ -84,12 +98,16 @@ const page = () => {
                             <th scope='col' className=' px-6 py-3'>
                                 Action
                             </th>
+                            <th>
+
+                            </th>
+                            
                         </tr>
 
                     </thead>
                     <tbody>
                         {
-                            blogs.map((item,index)=>{
+                            filtered.map((item,index)=>{
                                return <BlogTableItem key={index} mongoId={item._id} title={item.title} author={item.author} authorImg={item.authorImg} date={item.date} confirmDeleteBlog={confirmDeleteBlog}/>
                             })
                         }
@@ -100,6 +118,7 @@ const page = () => {
 
             </div>
 
+        </div>
         </div>
     );
 };
