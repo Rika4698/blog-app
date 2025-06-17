@@ -24,7 +24,7 @@ export const blogApi = createApi({
     // UPDATE (with formData)
     updateBlog: builder.mutation({
       query: (formData) => ({
-        url: '/blogs',
+        url: `/blog`,
         method: 'PUT',
         body: formData,
       }),

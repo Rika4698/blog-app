@@ -99,33 +99,39 @@ return NextResponse.json({success:true, msg:"Blog Added"});
 // Creating API Endpoint to update Blog
 
 export async function PUT(request) {
-  const formData = await request.formData();
-  const id = formData.get('id');
+  try {
+    const formData = await request.formData();
+    const id = formData.get('id');
+    console.log("Updating blog ID:", id);
 
-  const blog = await BlogModel.findById(id);
-  if (!blog) return NextResponse.json({ success: false, msg: "Blog not found" }, { status: 404 });
+    const blog = await BlogModel.findById(id);
+    if (!blog) {
+      return NextResponse.json({ success: false, msg: "Blog not found" }, { status: 404 });
+    }
 
-  const updatedFields = {
-    title: formData.get('title'),
-    description: formData.get('description'),
-    conclusion: formData.get('conclusion'),
-    category: formData.get('category'),
-    author: formData.get('author'),
-    steps: [
-      {
-        title: formData.get('stepTitle1'),
-        description: formData.get('stepDesc1'),
-      },
-      {
-        title: formData.get('stepTitle2'),
-        description: formData.get('stepDesc2'),
-      },
-      {
-        title: formData.get('stepTitle3'),
-        description: formData.get('stepDesc3'),
-      },
-    ],
-  };
+    const updatedFields = {
+      title: formData.get('title'),
+      description: formData.get('description'),
+      conclusion: formData.get('conclusion'),
+      category: formData.get('category'),
+      author: formData.get('author'),
+      userEmail: formData.get('userEmail'),
+      userImage: formData.get('userImage'),
+      steps: [
+        {
+          title: formData.get('stepTitle1'),
+          description: formData.get('stepDesc1'),
+        },
+        {
+          title: formData.get('stepTitle2'),
+          description: formData.get('stepDesc2'),
+        },
+        {
+          title: formData.get('stepTitle3'),
+          description: formData.get('stepDesc3'),
+        },
+      ],
+    };
 
     // ===== Handle Main Image =====
     const newImage = formData.get('image');
@@ -147,17 +153,14 @@ export async function PUT(request) {
       updatedFields.authorImg = "/" + authPath.split("/public")[1].replace(/^\/+/, '');
     }
 
-  await BlogModel.findByIdAndUpdate(id, updatedFields);
-  return NextResponse.json({ success: true, msg: "Blog Updated Successfully" });
+    await BlogModel.findByIdAndUpdate(id, updatedFields);
+    return NextResponse.json({ success: true, msg: "Blog Updated Successfully" });
+
+  } catch (error) {
+    console.error("PUT Error:", error);
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+  }
 }
-
-
-
-
-
-
-
-
 
 
 // Creating API Endpoint to delete Blog
