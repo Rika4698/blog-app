@@ -147,7 +147,7 @@ const page = () => {
                     {data?.title}
 
                 </h1>
-                <Image className='mx-auto mt-6 border border-white rounded-full' src={data.authorImg} width={60} height={60} alt='' />
+                <Image className='mx-auto mt-6  border border-white rounded-full w-14 h-14' src={data.authorImg} width={60} height={60} alt='' />
                 <p className='mt-1 pb-2 text-lg max-w-[740px] mx-auto'>{data.author}</p>
             </div>
 

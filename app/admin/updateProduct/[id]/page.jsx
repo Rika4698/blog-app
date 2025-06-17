@@ -103,7 +103,7 @@ const page = ({params}) => {
     if(image) formData.append('image', image);
 
     try {
-      await updateBlog(formData ).unwrap();
+      await updateBlog(formData).unwrap();
       toast.success("Blog updated successfully!");
       router.push('/admin/blogList'); // Redirect after update, adjust path
     } catch (err) {

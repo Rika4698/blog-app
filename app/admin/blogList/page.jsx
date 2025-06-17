@@ -79,6 +79,7 @@ const page = () => {
 
     return (
       <div>
+        {filtered.length < 1 ? <h2 className="text-center text-xl text-gray-500 mt-6">No Blog Created</h2>:<>
         <h2 className='text-center text-2xl font-semibold'>My All Blogs</h2>
         <div className='flex-1 pt-5 px-3  sm:pl-12'>
             <h1>All blogs: {filtered.length}</h1>
@@ -118,7 +119,7 @@ const page = () => {
 
             </div>
 
-        </div>
+        </div></>}
         </div>
     );
 };

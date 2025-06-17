@@ -28,7 +28,7 @@ export default function ClientLayout({ children, session }) {
 
   const handleLogout = () => {
     signOut({ callbackUrl: "/" });
-    toast.success("Logout Successfully");
+    // toast.success("Logout Successfully");
   };
 
   return (

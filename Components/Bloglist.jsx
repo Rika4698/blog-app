@@ -16,7 +16,7 @@ const Bloglist = () => {
 
     const blogs = data?.blogs || [];
 
-    const filltered = blogs.filter(blog => blog.category === menu).slice(0, 4);
+    const filtered = blogs.filter(blog => blog.category === menu).slice(0, 4);
 
     // const fetchBlogs = async () =>{
     //     const response = await axios.get('/api/blog');
@@ -40,7 +40,7 @@ const Bloglist = () => {
             </div> 
 
             <div className='flex flex-wrap justify-around gap-1 gap-y-10 mb-16 xl:mx-24'>
-            {filltered.map((item,index)=>  <BlogItem key={index} id={item._id} image={item.image} title={item.title} description={item.description} category={item.category}/>
+            {filtered.map((item,index)=>  <BlogItem key={index} id={item._id} image={item.image} title={item.title} description={item.description} category={item.category} authorEmail={item.userEmail} authorImg={item.userImage}/>
             )}
             </div>
 
