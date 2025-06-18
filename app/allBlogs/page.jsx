@@ -18,6 +18,8 @@ const page = () => {
   const [filtered, setFiltered] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const blogsPerPage = 6;
 
   const { data, error, isLoading } = useGetBlogsQuery();
   const blogs = data?.blogs || [];
@@ -46,10 +48,20 @@ const page = () => {
   // Filter logic
   const filterBlog = (text) => {
     if (!blogs) return;
-    const filter = blogs.filter((blog) =>
-      blog.title.toLowerCase().includes(text.toLowerCase()) ||
-      blog.category.toLowerCase().includes(text.toLowerCase())
-    );
+
+  const lowerText = text.toLowerCase().trim();
+
+    const filter = blogs.filter((blog) => {
+      const matchesText =
+        blog.title.toLowerCase().includes(lowerText) ||
+        blog.category.toLowerCase().includes(lowerText);
+
+      const matchesCategory = menu === 'All' || blog.category === menu;
+
+      return matchesText && matchesCategory;
+      setCurrentPage(1);
+    });
+
     setFiltered(filter);
   };
 
@@ -57,14 +69,18 @@ const page = () => {
     if (!isLoading && blogs) {
       filterBlog(searchText);
     }
-  }, [searchText, blogs, isLoading]);
+  }, [searchText, blogs, isLoading, menu]);
 
   const handleSearch = () => {
     filterBlog(searchText);
   };
 
+  const paginatedBlogs = filtered.slice((currentPage - 1) * blogsPerPage, currentPage * blogsPerPage);
+  const totalPages = Math.ceil(filtered.length / blogsPerPage);
+
   if (isLoading) return <p className="text-center mt-10">Loading blogs...</p>;
   if (error) return <p className="text-center text-red-500">Failed to load blogs</p>;
+  
   
 
 
@@ -147,19 +163,35 @@ return (
             </div>
 
 
-            <div className='flex justify-center gap-6 my-12'>
-                        {['All', 'Technology', 'Startup', 'Lifestyle'].map((cate) => ( <button key={cate} onClick={() => setMenu(cate)} className={menu === cate ? "bg-black text-white py-1 px-4 rounded-sm":""}>{cate}</button>
+            <div className='flex justify-center mt-[58px] gap-3 sm:gap-6 text-base sm:text-lg mb-[60px]'>
+                        {['All', 'Technology', 'Startup', 'Lifestyle'].map((cate) => ( <button key={cate} onClick={() => {
+      setCurrentPage(1); 
+      setMenu(cate);    
+    }} className={` rounded-sm transition-all duration-300 ease-in-out cursor-pointer ${
+        menu === cate
+          ? 'bg-black text-white py-1 px-2 sm:px-4'
+          : 'py-1 px-2 sm:px-4 bg-white text-black hover:bg-black hover:text-white'
+      }`}
+    >{cate}</button>
                         ))}
                       
                         </div> 
             
-                        <div className='flex flex-wrap justify-around gap-1 gap-y-10 mb-16 xl:mx-24'>
-                        {filtered.filter((item)=> menu ==='All'?true:item.category===menu).map((item,index)=>{
-                return  <BlogItem key={index} id={item._id} image={item.image} title={item.title} description={item.description} category={item.category}/>
-})}
-                        </div>
+                       <div className='flex flex-wrap justify-around gap-1 gap-y-10 mb-16 xl:mx-24 min-h-[300px] transition-all duration-300'>
+          {paginatedBlogs.length > 0 ? paginatedBlogs.map((item, index) => (
+            <BlogItem key={index} id={item._id} image={item.image} title={item.title} description={item.description} category={item.category} authorEmail={item.userEmail} authorImg={item.userImage} />
+          )) : (<p className="text-center text-gray-600 w-full mt-10">No blogs found.</p>)}
+        </div>
             
-                  
+             {totalPages > 1 && (
+          <div className="flex justify-center mb-10 gap-3">
+            {Array.from({ length: totalPages }).map((_, idx) => (
+              <button key={idx + 1} onClick={() => setCurrentPage(idx + 1)} className={`px-4 py-2 border ${currentPage === idx + 1 ? 'bg-black text-white' : 'hover:bg-black hover:text-white transition-all'}`}>
+                {idx + 1}
+              </button>
+            ))}
+          </div>
+        )}     
 
            
         </div>

@@ -159,7 +159,8 @@ const page = () => {
 
             {data?.steps.map((step, index) => (
                 <div key={index}>
-                    <h3 className='my-5 text-[18px] font-semibold'>{step.title}</h3>
+                    <h3 className='my-5 text-[18px] font-semibold'> <span>Step  {index + 1}: </span>
+  <span className='ml-2'>{step.title}</span></h3>
                     <p className='my-3'>{step.description}</p>
                 </div>
             ))}

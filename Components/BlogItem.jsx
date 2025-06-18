@@ -1,13 +1,13 @@
 'use client'
-import { assets, blog_data } from '@/Assets/assets';
+import { assets} from '@/Assets/assets';
 import Image from 'next/image';
-import Link from 'next/link';
+
 import React, { useState } from 'react';
 import { useSession } from "next-auth/react";
 import { useGetSubscriptionsQuery } from '@/store/subscriptionAPI';
 import EmailModal from './EmailModal';
 import { useRouter } from 'next/navigation';
-
+import { skipToken } from '@reduxjs/toolkit/query';
 
 
 const BlogItem = ({title,category, image, description,id, authorEmail, authorImg}) => {
@@ -18,7 +18,7 @@ const BlogItem = ({title,category, image, description,id, authorEmail, authorImg
   const [modalOpen, setModalOpen] = useState(false);
   const [checkingSub, setCheckingSub] = useState(false);
 
-  const { data: subscriptions, refetch } = useGetSubscriptionsQuery(
+  const {  refetch } = useGetSubscriptionsQuery(
     id && userEmail ? { blogId: id, subscriberEmail: userEmail } : skipToken,
     {
       skip: !id || !userEmail,

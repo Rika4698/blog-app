@@ -1,26 +1,39 @@
 'use client'
 import SubsTableItem from '@/Components/AdminComponents/SubsTableItem';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { useSession } from "next-auth/react";
+import { useGetSubscriptionsQuery,
+  useDeleteSubscriptionMutation } from '../../../store/subscriptionAPI';
 
 const page = () => {
-    const [emails, setEmails] = useState([]);
+ const { data: session } = useSession();
+  const userEmail = session?.user?.email;
+      const { data, error, isLoading } = useGetSubscriptionsQuery(
+    userEmail ? { blogAuthorEmail: userEmail } : {}, 
+  );
 
-    const fetchEmails = async () =>{
-        const response = await axios.get('/api/email');
-        setEmails(response.data.emails);
-    }
+  const [deleteSubscription] = useDeleteSubscriptionMutation();
 
-     const deleteEmail = (mongoId) => {
+  if (isLoading) return <p className='text-center mt-10'>Loading blogs subscribe....</p>;
+  if (error) return <p className='text-center text-red-500'>Failed to load blogs subscribe</p>;
+
+  // ✅ Safe handling of response
+  const blogs = Array.isArray(data) ? data : data?.blogs || [];
+  
+          console.log('data',blogs);
+    
+
+     const  deleteConfirm = (mongoId) => {
             toast(
               ({ closeToast }) => (
                 <div>
-                  <p className="font-semibold">Are you sure you want to delete this email?</p>
+                  <p className="font-semibold">Are you sure you want to delete this subscriber?</p>
                   <div className="flex gap-4 mt-3">
                     <button
                       className="bg-red-600 text-white px-4 py-1 rounded"
-                      onClick={() => deleteConfirm(mongoId, closeToast)}
+                      onClick={() => deleteEmail(mongoId, closeToast)}
                     >
                       Yes
                     </button>
@@ -39,43 +52,41 @@ const page = () => {
             );
           };
 
-    const deleteConfirm = async (mongoId, closeToast) =>{
-        try {
-        const response = await axios.delete('/api/email',{
-            params:{
-                id:mongoId
-            }
-        })
-    
-        if(response.data.success){
-            toast.success(response.data.msg);
-            fetchEmails();
-        }
-    }
-         catch (error) {
-                toast.error("Failed to delete this email.");
-              } finally {
-                closeToast();
-              }
+    const deleteEmail = async (mongoId, closeToast) =>{
+      try {
+                  const res = await deleteSubscription(mongoId).unwrap();
+                  toast.success(res.msg || "subscriber deleted successfully");
+                } catch (error) {
+                  toast.error("Failed to delete this email.");
+                } finally {
+                  closeToast();
+                }
     };
 
 
-    useEffect(() =>{
-        fetchEmails();
-    },[]);
+   
      
     return (
-        <div className='flex-1 pt-5 px-5 sm:pt-12 sm:pl-16'>
-            <h1>All Subscription</h1>
-            <div className='relative max-w-[600px] h-[80vh] overflow-x-auto mt-4 border border-gray-400 scrollbar-hide'>
+      <div>
+        <h2 className='text-center text-2xl font-semibold'>My Blogs Subscription</h2>
+
+        {blogs.length === 0 ? <h2 className="text-center text-xl text-gray-500 mt-20">No Blog Subscribe.</h2>:<>
+        
+        <div className='flex-1 pt-10 px-5  sm:pl-12'>
+            <h1>All Subscription: {blogs.length}</h1>
+            <div className='relative h-[80vh] max-w-[850px] overflow-auto mt-4 border border-gray-400 scrollbar-hide'>
                 <table className='w-full text-sm text-gray-500'>
-                    <thead className='text-xs text-left text-gray-700 uppercase bg-gray-50'>
+                    <thead className='text-sm text-gray-700 text-left uppercase bg-gray-50'>
                     <tr>
                         <th scope='col' className='px-6 py-3'>
                             Email Subscription
 
                         </th>
-                        <th scope='col' className='hidden sm:block px-6 py-3'>
+                        <th scope='col' className='px-6 py-3'>
+                            Blog Title
+
+                        </th>
+                        <th scope='col' className=' px-6 py-3'>
                             Date
 
                         </th>
@@ -87,8 +98,8 @@ const page = () => {
 
                     </thead>
                     <tbody>
-                        {emails.map((item,index)=>{
-                            return <SubsTableItem key={index} mongoId={item._id} email={item.email} date={item.date} deleteEmail={deleteEmail}/> 
+                        {blogs.map((item,index)=>{
+                            return <SubsTableItem key={index} mongoId={item._id} blogTitle={item.blogTitle} subscriberEmail={item.subscriberEmail} subscriberImg={item.subscriberImg} date={item.date} deleteConfirm={deleteConfirm}/> 
                         })}
                        
                     </tbody>
@@ -97,7 +108,7 @@ const page = () => {
 
             </div>
             
-        </div>
+        </div></>} </div>
     );
 };
 

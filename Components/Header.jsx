@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useSession, signOut } from "next-auth/react";
 
-const Header = () => {
+const Header = ({ searchQuery, setSearchQuery }) => {
     const { data: session, status } = useSession();
     const user = session?.user;
     const [email, setEmail] = useState('');
@@ -141,10 +141,13 @@ const Header = () => {
             <div className='text-center my-8'>
             <h1 className='text-3xl sm:text-5xl font medium'>Latest Blogs</h1>
             <p className='mt-10 max-w-[740px] m-auto text-xs sm:text-base'>Stay updated with our newest posts, fresh ideas, and trending topics. Dive into the latest articles curated just for you — straight from the minds of passionate writers.</p>
-            <form onSubmit={onSubmitHandler} className='flex justify-between max-w-[500px] scale-75 sm:scale-100 mx-auto mt-10 border border-black shadow-[-7px_7px_0px_#000000]' action="">
+            <form onSubmit={(e) => {e.preventDefault(); }} className='flex justify-between max-w-[500px] scale-75 sm:scale-100 mx-auto mt-10 border border-black shadow-[-7px_7px_0px_#000000]' action="">
 
-                <input onChange={(e)=>setEmail(e.target.value)} value={email} type="email" placeholder='Enter your email' className='pl-4 outline-none' />
-                <button type="submit" className='border-l border-black py-4 px-4 sm:px-8 active:bg-gray-600 active:text-white'>Subscribe</button>
+                <input type="text"
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
+      placeholder="Search blog title or category" className='pl-4 outline-none' />
+                <button type="submit" className='border-l border-black py-4 px-4 sm:px-8 active:bg-gray-600 active:text-white'>Search</button>
 
             </form>
             </div>

@@ -20,12 +20,12 @@ const BlogTableItem = ({authorImg,title,author,date,confirmDeleteBlog,mongoId}) 
                 {BlogDate.toDateString()}
 
             </td>
-            <td  className='pl-6 py-4 cursor-pointer text-gray-900'>
-               <Link href={`/admin/updateProduct/${mongoId}`}> <button title='Edit' className='cursor-pointer '><SquarePen /></button></Link>
+            <td  className='pl-6 py-4 '>
+               <Link href={`/admin/updateProduct/${mongoId}`}> <button title='Edit' className='cursor-pointer text-gray-900 '><SquarePen /></button></Link>
 
             </td>
-            <td onClick={()=>confirmDeleteBlog(mongoId)} className='pr-8 py-4 cursor-pointer text-gray-900 hover:text-red-500'>
-                <button title='Delete' className='cursor-pointer '><Trash /></button> 
+            <td  className='pr-8 py-4  '>
+                <button title='Delete' onClick={()=>confirmDeleteBlog(mongoId)} className='cursor-pointer text-gray-900 hover:text-red-500  '><Trash className=''/></button> 
 
             </td>
         </tr>

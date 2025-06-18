@@ -102,7 +102,7 @@ export async function PUT(request) {
   try {
     const formData = await request.formData();
     const id = formData.get('id');
-    console.log("Updating blog ID:", id);
+    
 
     const blog = await BlogModel.findById(id);
     if (!blog) {

@@ -10,7 +10,7 @@ const LoadDB = async () =>{
 
 LoadDB();
 
-// ✅ GET: Fetch all or filtered subscriptions
+// GET: Fetch all or filtered subscriptions
 export async function GET(req) {
   try {
     
@@ -32,7 +32,7 @@ export async function GET(req) {
   }
 }
 
-// ✅ POST: Create a new subscription
+//  POST: Create a new subscription
 export async function POST(req) {
   try {
 
@@ -61,11 +61,11 @@ export async function POST(req) {
   }
 }
 
-// ✅ DELETE: Delete a subscription by ID
+// DELETE: Delete a subscription by ID
 export async function DELETE(req) {
   try {
-    
-    const { id } = await req.json();
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get('id');
 
     const deleted = await SubscribeModel.findByIdAndDelete(id);
 

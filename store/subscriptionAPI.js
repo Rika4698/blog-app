@@ -12,17 +12,18 @@ export const subscriptionAPI = createApi({
         body: data,
       }),
     }),
+
     getSubscriptions: builder.query({
       query: (params) => {
         const query = new URLSearchParams(params).toString();
         return `/subscribe?${query}`;
       },
     }),
+    
     deleteSubscription: builder.mutation({
       query: (id) => ({
-        url: '/subscribe',
-        method: 'DELETE',
-        body: { id },
+    url: `/subscribe?id=${id}`,  
+    method: 'DELETE',
       }),
     }),
   }),

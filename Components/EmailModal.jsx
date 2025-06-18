@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import { useSubscribeMutation } from '../store/subscriptionAPI';
 import { useSession } from 'next-auth/react';
 import { toast } from 'react-toastify';
-
+import {X} from "lucide-react";
 const EmailModal = ({ isOpen, onClose, onSuccess, blogData }) => {
   const { data: session } = useSession();
-  const [email, setEmail] = useState(session?.user?.email || '');
+  const [email, setEmail] = useState('');
   const [subscribe] = useSubscribeMutation();
   const [loading, setLoading] = useState(false);
 
@@ -36,16 +36,16 @@ const EmailModal = ({ isOpen, onClose, onSuccess, blogData }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 flex justify-center items-center">
-      <div className="bg-white w-full max-w-md rounded-xl shadow-lg p-6 relative">
+    <div className="fixed inset-0 z-50 bg-black/50 flex justify-center items-center px-3">
+      <div className="bg-white w-full max-w-md rounded-xl shadow-lg p-6 relative border ">
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-gray-500 hover:text-black text-xl"
+          className="absolute top-2 right-2 text-gray-600 hover:text-red-500  mr-2 mt-1"
         >
-          ×
+          <X size={22} />
         </button>
         <h2 className="text-xl font-semibold mb-4">Subscribe to view this blog</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        {/* <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="email"
             value={email}
@@ -62,7 +62,15 @@ const EmailModal = ({ isOpen, onClose, onSuccess, blogData }) => {
           >
             {loading ? 'Subscribing...' : 'Subscribe & Continue'}
           </button>
-        </form>
+        </form> */}
+        <form onSubmit={handleSubmit} className='flex -mx-10 sm:mx-auto justify-between max-w-[500px] scale-75 sm:scale-95 sm:my-8  border border-black shadow-[-7px_7px_0px_#000000] ' action="">
+
+             <input  onChange={(e) => setEmail(e.target.value)}
+             value={email} type="email" placeholder='Enter your email' disabled={!session} className='pl-4 outline-none' required />
+            
+                <button type="submit" className='border-l border-black py-4 px-4  sm:px-8 active:bg-gray-600 active:text-white' disabled={loading}>{loading ? 'Subscribing...' : 'Subscribe'}</button>
+
+            </form>
       </div>
     </div>
   );

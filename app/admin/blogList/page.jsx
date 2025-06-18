@@ -79,8 +79,9 @@ const page = () => {
 
     return (
       <div>
-        {filtered.length < 1 ? <h2 className="text-center text-xl text-gray-500 mt-6">No Blog Created</h2>:<>
         <h2 className='text-center text-2xl font-semibold'>My All Blogs</h2>
+        {filtered.length === 0 ? <h2 className="text-center text-xl text-gray-500 mt-20">No Blog Created</h2>:<>
+        
         <div className='flex-1 pt-5 px-3  sm:pl-12'>
             <h1>All blogs: {filtered.length}</h1>
             <div className='relative h-[80vh] max-w-[850px] overflow-auto mt-4 border border-gray-400 scrollbar-hide'>
