@@ -67,7 +67,7 @@ const Bloglist = ({searchQuery}) => {
         ))}
       </div>
 
-            <div className="flex flex-wrap justify-around gap-1 gap-y-10 mb-16 xl:mx-24 min-h-[300px] transition-all duration-300">
+            <div className="flex flex-wrap justify-around gap-3 gap-y-10 mb-16 xl:mx-20 min-h-[300px] transition-all duration-300">
         {filtered.length > 0 ? (
           filtered
             .filter((item) => (menu === 'All' ? true : item.category === menu))
@@ -91,7 +91,7 @@ const Bloglist = ({searchQuery}) => {
 
             <div className="text-center flex justify-center items-center my-12">
         <Link href="/allBlogs" className="text-black text-lg flex gap-2">
-          <h3>See All Blogs</h3> <ArrowRight size={25} className='mt-0.5'/>
+          <h3 className='font-semibold'>See All Blogs</h3> <ArrowRight size={25} className='mt-0.5'/>
         </Link>
       </div>
 

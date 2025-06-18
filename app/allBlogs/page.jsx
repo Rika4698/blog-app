@@ -177,7 +177,7 @@ return (
                       
                         </div> 
             
-                       <div className='flex flex-wrap justify-around gap-1 gap-y-10 mb-16 xl:mx-24 min-h-[300px] transition-all duration-300'>
+                       <div className='flex flex-wrap justify-around gap-4 gap-y-10 mb-16 xl:mx-20 min-h-[300px] transition-all duration-300'>
           {paginatedBlogs.length > 0 ? paginatedBlogs.map((item, index) => (
             <BlogItem key={index} id={item._id} image={item.image} title={item.title} description={item.description} category={item.category} authorEmail={item.userEmail} authorImg={item.userImage} />
           )) : (<p className="text-center text-gray-600 w-full mt-10">No blogs found.</p>)}
