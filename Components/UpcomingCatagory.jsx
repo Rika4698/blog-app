@@ -8,139 +8,34 @@ const UpcomingCatagory = () => {
    --- Upcoming Blog Category ---
   </h2>
 
-  <ul className="flex flex-wrap  justify-around gap-3 gap-y-10 mb-16 xl:mx-24  ">
-    
+  <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-8 xl:px-28 py-10">
+  {[
+    { icon: '💼', title: 'Business', label: 'Business category' },
+    { icon: '🛠️', title: 'Software Developer', label: 'Developer' },
+    { icon: '📣', title: 'Marketing', label: 'Marketing category' },
+    { icon: '🎓', title: 'Education', label: 'Education category' },
+    { icon: '📊', title: 'Data Analysis', label: 'Data Analysis category' },
+    { icon: '🎨', title: 'Design', label: 'Design category' },
+  ].map((item, index) => (
     <li
-        className="block h-full transition-all duration-200 bg-white border border-gray-200 rounded group hover:shadow-lg hover:border-black hover:ring-1 hover:ring-gray-700/20">
-        <div className="flex items-center p-6">
-          <div
-            className="flex items-center justify-center flex-shrink-0 w-16 h-16 transition-colors duration-200 rounded bg-green-50 group-hover:bg-green-100">
-            <span className="text-4xl" role="img" aria-label="Business category">💼</span>
-          </div>
-
-          <div className="flex-grow ml-6">
-            <h3
-              className="text-lg font-semibold text-gray-600 transition-colors duration-200 line-clamp-1 group-hover:text-gray-900">
-              Business
-            </h3>
-
-           
-          </div>
-
+      key={index}
+      className="bg-white border-2 border-gray-100 shadow-sm rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-black"
+    >
+      <div className="flex items-center gap-4 px-6 py-5">
+        <div className="w-14 h-14 rounded-full flex items-center justify-center bg-green-50 text-3xl transition duration-300 group-hover:bg-green-100">
+          <span role="img" aria-label={item.label}>
+            {item.icon}
+          </span>
         </div>
-      
-    </li>
-  
-    <li
-        className="block h-full transition-all duration-200 bg-white border border-gray-200 rounded group hover:shadow-lg hover:border-black hover:ring-1 hover:ring-gray-700/20">
-        <div className="flex items-center p-6">
-          <div
-            className="flex items-center justify-center flex-shrink-0 w-16 h-16 transition-colors duration-200 rounded bg-green-50 group-hover:bg-green-100">
-            <span className="text-4xl" role="img" aria-label="Developer ">🛠️</span>
-          </div>
-
-          <div className="flex-grow ml-6">
-            <h3
-              className="text-lg font-semibold text-gray-600 transition-colors duration-200 line-clamp-1 group-hover:text-gray-900">
-             Software Developer
-            </h3>
-
-            
-          </div>
-
-          
+        <div>
+          <h3 className="text-lg font-semibold text-gray-700 hover:text-black transition-colors">
+            {item.title}
+          </h3>
         </div>
-    
+      </div>
     </li>
-    <li
-        className="block h-full transition-all duration-200 bg-white border border-gray-200 rounded group hover:shadow-lg hover:border-black hover:ring-1 hover:ring-gray-700/20">
-        <div className="flex items-center p-6">
-          <div
-            className="flex items-center justify-center flex-shrink-0 w-16 h-16 transition-colors duration-200 rounded bg-green-50 group-hover:bg-green-100">
-            <span className="text-4xl" role="img" aria-label="Marketing category">📣</span>
-          </div>
-
-          <div className="flex-grow ml-6">
-            <h3
-              className="text-lg font-semibold text-gray-600 transition-colors duration-200 line-clamp-1 group-hover:text-gray-900">
-              Marketing
-            </h3>
-
-            
-          </div>
-
-        
-        </div>
-      
-    </li>
-
-
-    <li
-        className="block h-full transition-all duration-200 bg-white border border-gray-200 rounded group hover:shadow-lg hover:border-black hover:ring-1 hover:ring-gray-700/20">
-        <div className="flex items-center p-6">
-          <div
-            className="flex items-center justify-center flex-shrink-0 w-16 h-16 transition-colors duration-200 rounded bg-green-50 group-hover:bg-green-100">
-            <span className="text-4xl" role="img" aria-label="Education category">🎓</span>
-          </div>
-
-          <div className="flex-grow ml-6">
-            <h3
-              className="text-lg font-semibold text-gray-600 transition-colors duration-200 line-clamp-1 group-hover:text-gray-900">
-              Education
-            </h3>
-
-           
-          </div>
-
-         
-        </div>
-    
-    </li>
-   
-    <li
-        className="block h-full transition-all duration-200 bg-white border border-gray-200 rounded group hover:shadow-lg hover:border-black hover:ring-1 hover:ring-gray-700/20">
-        <div className="flex items-center p-6">
-          <div
-            className="flex items-center justify-center flex-shrink-0 w-16 h-16 transition-colors duration-200 rounded bg-green-50 group-hover:bg-green-100">
-            <span className="text-4xl" role="img" aria-label="Data Analysis category">📊</span>
-          </div>
-
-          <div className="flex-grow ml-6">
-            <h3
-              className="text-lg font-semibold text-gray-600 transition-colors duration-200 line-clamp-1 group-hover:text-gray-900">
-              Data Analysis
-            </h3>
-
-            
-          </div>
-
-          
-        </div>
-      
-    </li>
-
-
-    <li
-        className="block h-full transition-all duration-200 bg-white border border-gray-200 rounded group hover:shadow-lg hover:border-black hover:ring-1 hover:ring-gray-700/20">
-        <div className="flex items-center p-6">
-          <div
-            className="flex items-center justify-center flex-shrink-0 w-16 h-16 transition-colors duration-200 rounded bg-green-50 group-hover:bg-green-100">
-            <span className="text-4xl" role="img" aria-label="Design category">🎨</span>
-          </div>
-
-          <div className="flex-grow ml-6">
-            <h3
-              className="text-lg font-semibold text-gray-600 transition-colors duration-200 line-clamp-1 group-hover:text-gray-900">
-              Design
-            </h3>
-          </div>
-        </div>
-      
-    </li>
-   
-   
-   
-  </ul>
+  ))}
+</ul>
 
  
 </section>

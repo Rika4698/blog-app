@@ -3,6 +3,7 @@
 import Bloglist from "@/Components/Bloglist";
 import Footer from "@/Components/Footer";
 import Header from "@/Components/Header";
+import HowWorkSection from "@/Components/HowWorkSection";
 import UpcomingCatagory from "@/Components/UpcomingCatagory";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
@@ -16,6 +17,7 @@ export default function Home() {
     <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
     <Bloglist searchQuery={searchQuery}/>
     <UpcomingCatagory></UpcomingCatagory>
+    <HowWorkSection/>
     <Footer/>
     </>
   );
