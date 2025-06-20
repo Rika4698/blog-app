@@ -104,7 +104,7 @@ const Header = ({ searchQuery, setSearchQuery }) => {
              
               <ul className="  ">
               {
-                       <><li className="group border-b border-gray-100 py-5 px-3 text-center  relative "> <Link href={'/admin/addProduct'} className=' text-center border border-black  font-medium px-7 py-2 bg-white shadow-[-5px_5px_0px_#000000] hover:shadow-none hover:translate-x-[-5px] hover:translate-y-[5px] transition-all'>
+                       <><li className="group border-b border-gray-100 py-5 px-3 text-center  relative "> <Link href={'/admin'} className=' text-center border border-black  font-medium px-7 py-2 bg-white shadow-[-5px_5px_0px_#000000] hover:shadow-none hover:translate-x-[-5px] hover:translate-y-[5px] transition-all'>
                         Blog Panel
 
                     </Link></li> </>

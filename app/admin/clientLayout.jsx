@@ -32,75 +32,86 @@ export default function ClientLayout({ children, session }) {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen">
+      <div className="flex flex-col lg:flex-row min-h-screen w-full ">
       <ToastContainer theme="dark" />
-      <Sidebar />
-      <div className="flex flex-col flex-1 w-full">
-        {/* Topbar */}
-        <div className="flex items-center justify-between py-[5.5px] px-4 sm:px-12 border-b border-black bg-white">
-          <h3 className="font-medium text-lg sm:text-xl">Blog Panel</h3>
-          <div className="flex items-center gap-4">
+    
+      {/* Sidebar - visible on large screens */}
+      <aside className="border-b border-gray-300 lg:block lg:overflow-y-auto lg:overflow-x-hidden lg:w-80  bg-slate-100 lg:border lg:border-black">
+        <Sidebar />
+      </aside>
+
+      {/* Main content area */}
+      <div className="flex-1 flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900">
+        {/* Header */}
+        <header className="flex items-center justify-between px-6 py-[15.5px] border-b border-gray-300  bg-white ">
+          <h1 className="text-xl font-semibold">Blog Panel</h1>
+
+          <div className="relative" >
             <button
               type="button"
-              className="flex text-sm bg-gray-800 rounded-full focus:ring-4 transition-transform duration-300 hover:scale-110 focus:ring-gray-300"
+              aria-label="User menu"
+              className="flex items-center focus:outline-none focus:ring-4 rounded-full focus:ring-gray-300 dark:focus:ring-gray-600 transition-transform duration-300 hover:scale-110"
               onClick={(e) => {
                 e.stopPropagation();
                 setDropdownOpen((prev) => !prev);
               }}
             >
-              <span className="sr-only">Open user menu</span>
-              {user?.image && (
+              {user?.image ? (
                 <Image
-                  className="btn-circle w-12 h-12 lg:w-14 lg:h-14 rounded-full ring-2 ring-gray-300"
                   src={user.image}
-                  width={35}
-                  height={35}
                   alt="User Avatar"
+                  width={40}
+                  height={40}
+                  className="rounded-full ring-2 ring-gray-300 dark:ring-gray-600"
                 />
+              ) : (
+                <div className="w-10 h-10 rounded-full bg-gray-400" />
               )}
             </button>
 
-            {/* User Dropdown */}
+            {/* Dropdown menu */}
             {isDropdownOpen && (
-              <div
-                id="dropdownMenu"
-                className="z-50 absolute right-4 top-[125px] lg:top-[67px] bg-white divide-y divide-gray-100 rounded-lg shadow-lg shadow-slate-600 drop-shadow-lg dark:bg-gray-700 dark:divide-gray-200"
-              >
+              <div id='dropdownMenu' className="absolute right-0 mt-2 w-56 bg-white dark:bg-gray-700 rounded-lg shadow-xl  divide-y divide-gray-100 dark:divide-gray-600 z-50  border border-gray-200">
                 <div className="px-4 py-3">
-                  <span className="block text-base xl:text-lg font-bold text-gray-900 dark:text-white">
-                    {user.name}
-                  </span>
-                  <span className="block text-sm text-gray-500 truncate dark:text-gray-400">
-                    {user.email}
-                  </span>
+                  <p className="text-base font-bold text-gray-900 dark:text-white truncate">
+                    {user?.name || "User"}
+                  </p>
+                  <p className="text-sm text-gray-500 dark:text-gray-300 truncate">
+                    {user?.email}
+                  </p>
                 </div>
 
-                <ul>
-                  <li className="group border-b border-gray-100 py-5 px-3 text-center relative">
+                <ul className="py-1">
+                  <li>
                     <Link
                       href="/"
-                      className="text-center border border-black font-medium px-7 py-2 bg-white shadow-[-5px_5px_0px_#000000] hover:shadow-none hover:translate-x-[-5px] hover:translate-y-[5px] transition-all"
+                      className="block px-4 py-2 text-center text-black dark:text-white border border-black  mx-4 my-2 font-medium bg-white shadow-[-5px_5px_0px_#000000] hover:shadow-none hover:translate-x-[-5px] hover:translate-y-[5px] transition-all duration-300"
+                      onClick={() => setDropdownOpen(false)}
                     >
                       Home
                     </Link>
                   </li>
-                  <li className="py-3 px-16">
+                </ul>
+
+                <ul className="py-1">
+                  <li className="px-4 py-3">
                     <button
                       onClick={handleLogout}
-                      className="rounded-lg text-white bg-red-500 lg:w-28 lg:h-10 w-24 h-10"
+                      className="w-full text-white bg-red-500 rounded-lg py-2 hover:bg-red-600 transition"
                     >
-                      <span className="ml-2 text-base">Logout</span>
+                      Logout
                     </button>
                   </li>
                 </ul>
               </div>
             )}
           </div>
-        </div>
+        </header>
 
-        {/* Page Content */}
-        <div className="p-4 sm:p-6">{children}</div>
+        {/* Page content */}
+        <main className="flex-1 p-3 md:p-6 overflow-y-auto">{children}</main>
       </div>
     </div>
+  
   );
-}
+}  

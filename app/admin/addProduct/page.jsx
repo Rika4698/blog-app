@@ -98,28 +98,7 @@ const [createBlog] = useCreateBlogMutation();
         }
     };
 
-        // const response = await axios.post('/api/blog', formData);
-        // if (response.data.success) {
-        //     toast.success(response.data.msg);
-        //     setImage(false);
-        //     setAuthorImg(false);
-        //     setData({
-        //         title: "",
-        //         description: "",
-        //         stepTitle1: "",
-        //         stepDesc1: "",
-        //         stepTitle2: "",
-        //         stepDesc2: "",
-        //         stepTitle3: "",
-        //         stepDesc3: "",
-        //         conclusion: "",
-        //         category: "Startup",
-        //         author: ""
-        //     });
-        // }
-        // else {
-        //     toast.error("Error");
-        // }
+        
     
     return (
         <>
@@ -156,7 +135,7 @@ const [createBlog] = useCreateBlogMutation();
                   {/* Title */}
       <div className="mt-4">
         <p className="text-xl">Blog Title</p>
-        <div className="flex gap-2">
+        <div className="flex gap-2 ">
           <input
             name="title"
             value={data.title}
@@ -164,7 +143,7 @@ const [createBlog] = useCreateBlogMutation();
             className="w-full sm:w-[500px] mt-2 px-4 py-2 border"
             placeholder="Enter title" required
           />
-          <button type="button" onClick={() => handleGenerate("title")} className="h-10 w-10 rounded-full bg-blue-600 text-white text-lg cursor-pointer ">
+          <button type="button" onClick={() => handleGenerate("title")} className="w-10 h-9  md:h-10 md:w-10 rounded-full bg-blue-600 text-white text-sm md:text-lg cursor-pointer ">
             AI
           </button>
         </div>
@@ -184,7 +163,7 @@ const [createBlog] = useCreateBlogMutation();
             placeholder="Write short description" 
             rows={4} required
           />
-          <button type="button" onClick={() => handleGenerate("description")} className=" rounded-full  bg-blue-600 text-white text-lg cursor-pointer h-10 w-10">
+          <button type="button" onClick={() => handleGenerate("description")} className=" w-10 h-9  md:h-10 md:w-10 rounded-full bg-blue-600 text-white text-sm md:text-lg cursor-pointer">
             AI
           </button>
         </div>
@@ -234,7 +213,7 @@ const [createBlog] = useCreateBlogMutation();
             rows={4}
             placeholder="Write conclusion" required
           />
-          <button type="button" onClick={() => handleGenerate("conclusion")} className="rounded-full  bg-blue-600 text-white text-lg cursor-pointer h-10 w-10">
+          <button type="button" onClick={() => handleGenerate("conclusion")} className="w-10 h-9  md:h-10 md:w-10 rounded-full bg-blue-600 text-white text-sm md:text-lg cursor-pointer">
             AI
           </button>
         </div>

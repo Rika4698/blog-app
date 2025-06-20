@@ -71,11 +71,7 @@ const page = () => {
 };
     
     
-    // useEffect(()=>{ useDeleteBlogMutation
-    //     fetchBlogs();
-
-    // },[])
-
+  
 
     return (
       <div>

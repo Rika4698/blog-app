@@ -12,11 +12,11 @@ const BlogTableItem = ({authorImg,title,author,date,confirmDeleteBlog,mongoId}) 
             <p>{author?author:"No author"}</p>
 
           </td>
-            <td className='px-6 py-4 text-gray-900'>
+            <td className='px-6 py-4 text-gray-900 min-w-[400px] lg:min-w-0 '>
                 {title?title:"No title"}
 
             </td>
-            <td className='px-6 py-4 text-gray-900'>
+            <td className='px-6 py-4 text-gray-900 min-w-[200px] lg:min-w-0'>
                 {BlogDate.toDateString()}
 
             </td>

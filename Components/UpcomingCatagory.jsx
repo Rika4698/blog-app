@@ -4,8 +4,8 @@ const UpcomingCatagory = () => {
     return (
         <div>
             <section className="p-4">
-  <h2 className="mb-10  font-semibold text-gray-900 text-2xl text-center mt-6 animate-pulse">
-   --- Upcoming Blog Category ---
+  <h2 className="mb-10  font-bold text-gray-900 text-2xl sm:text-4xl text-center mt-6 animate-pulse">
+   -- Upcoming Blog Category --
   </h2>
 
   <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-8 xl:px-28 py-10">

@@ -7,7 +7,7 @@ const HowWorkSection = () => {
                 <div className="max-w-6xl mx-auto h-max px-6 md:px-12 xl:px-6">
                     <div className="text-center ">
                       
-                        <h2 className="my-4 text-3xl font-bold text-black md:text-4xl">How does it work?</h2>
+                        <h2 className="my-4 text-3xl font-bold text-black sm:text-4xl">How does it work?</h2>
                         <p className="text-gray-600">You follow our process to get you started as quickly as possible</p>
                     </div>
 

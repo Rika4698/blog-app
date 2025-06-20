@@ -17,7 +17,7 @@ const ProjectAchievements = () => {
   return (
     <section ref={ref} className="py-16 px-4 md:px-8 bg-white mt-6">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-gray-800">
           Our Milestones Journey 
         </h2>
         <p className="text-gray-600 mb-12">
@@ -42,7 +42,7 @@ const ProjectAchievements = () => {
 
               {/* Count */}
               <h3 className="text-4xl font-bold text-black mb-2">
-                {inView && <CountUp end={stat.count} duration={3} suffix={stat.suffix}/>}
+                {inView && <CountUp end={stat.count} duration={2} suffix={stat.suffix}/>}
               </h3>
 
               {/* Label */}
