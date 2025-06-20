@@ -69,8 +69,8 @@ const Dashboard = () => {
         label: 'Blog Updates',
         data: blogCategoryChartData.map(item => item.total),
         fill: false,
-        borderColor: '#8b5cf6',
-        backgroundColor: '#8b5cf6',
+        borderColor: '#485ff4',
+        backgroundColor: '#485ff4',
         tension: 0.4,
       },
     ],
@@ -108,7 +108,7 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-10">
           {stats.map((stat, i) => (
             <div key={i} className="relative group bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition duration-300">
-              <div className="absolute top-0 left-0 w-full h-full rounded-xl pointer-events-none z-0 opacity-0 group-hover:opacity-100 transition-all duration-500 border-2 border-purple-500 animate-[border-glow_1s_linear_infinite]"></div>
+              <div className="absolute top-0 left-0 w-full h-full rounded-xl pointer-events-none z-0 opacity-0 group-hover:opacity-100 transition-all duration-500 border-2 border-black animate-[border-glow_1s_linear_infinite]"></div>
               <div className="relative z-10 flex justify-center items-center gap-4">
                 <div className={`text-3xl p-4 rounded-full ${stat.color} shadow-inner`}>
                   {stat.icon}
@@ -129,7 +129,7 @@ const Dashboard = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {Object.entries(totalCategoryCount).map(([category, count], idx) => (
               <div key={idx} className="relative group bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition duration-300">
-                <div className="absolute top-0 left-0 w-full h-full rounded-xl pointer-events-none z-0 opacity-0 group-hover:opacity-100 transition-all duration-500 border-2 border-purple-500 animate-[border-glow_1s_linear_infinite]"></div>
+                <div className="absolute top-0 left-0 w-full h-full rounded-xl pointer-events-none z-0 opacity-0 group-hover:opacity-100 transition-all duration-500 border-2 border-black animate-[border-glow_1s_linear_infinite]"></div>
                 <div className="relative z-10 flex justify-center items-center gap-4">
                   <div className="text-3xl p-4 rounded-full bg-purple-100 text-purple-800 shadow-inner">🗂️</div>
                   <div>
