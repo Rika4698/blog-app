@@ -1,8 +1,8 @@
 # Project Name: Blogger Platform
 
-# Live URL: https://blog-app-xi-ruby-23.vercel.app/
+## Live URL: https://blog-app-xi-ruby-23.vercel.app/
 
-# Project Overview:
+## Project Overview:
 ### Blogger is a blog platform where users can explore public blog posts and subscribers can access full content. Author can manage blogs through a powerful dashboard, with AI assistance for title, description, conclusion generation using Gemini API. Author can manage blog with edit and delete. Built with Next.js, Tailwind CSS, and MongoDB, this app is fully responsive and user-friendly.
 
 <br/>
