@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Project Name: Blogger Platform
 
-## Getting Started
+# Live URL: https://blog-app-xi-ruby-23.vercel.app/
 
-First, run the development server:
+# Project Overview:
+### Blogger is a blog platform where users can explore public blog posts and subscribers can access full content. Author can manage blogs through a powerful dashboard, with AI assistance for title, description, conclusion generation using Gemini API. Author can manage blog with edit and delete. Built with Next.js, Tailwind CSS, and MongoDB, this app is fully responsive and user-friendly.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<br/>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Tech Stack:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Frontend:** Next.js, React, Tailwind CSS
 
-## Learn More
+- **Backend:** Next.js, MongoDB (via Mongoose)
 
-To learn more about Next.js, take a look at the following resources:
+- **Authentication:** NextAuth.js
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **State Management:**  Gemini API (for blog title, description, conclusion)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Image Handling:**  Cloudinary
 
-## Deploy on Vercel
+<br/>
+<br/>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ✨ Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 📰 Public Blog Display
+- All blogs are publicly listed on the homepage.
+- Tab by categories.
+- Pagination included for smooth browsing.
+
+### 🔐 Authentication
+- Secure user login and session handling with NextAuth.js.
+- Only logged-in users can access full blog content or create/edit posts.
+
+### ✍️ AI-Assisted Blog Creation
+- Auto-generate:
+  - Blog Title
+  - Description 
+  - Conclusion
+- Powered by **Gemini API**
+- Each field remains editable before submission.
+
+### 🛠️ Blog Panel
+- Dashboard with sidebar navigation
+- Add Blog, View Blog List, Edit and Delete Blog, Manage Subscriptions
+- Responsive and intuitive layout
+
+### 📩 Email Subscription
+- Simple email input field for users to subscribe.
+- Only user and subscribers can view other author full blog content.
+
+<br/>
+<br/>
+
+*A responsive, blog platform where user create AI-assisted blog posts and subscribers enjoy full access. Simple, secure, and beautifully designed.*
+
+
+
+    
