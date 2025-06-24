@@ -23,7 +23,7 @@
 <br/>
 <br/>
 
-## ✨ Features
+## ✨Project Features
 
 ### 📰 Public Blog Display
 - All blogs are publicly listed on the homepage.
