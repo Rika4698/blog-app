@@ -33,6 +33,7 @@
 ### 🔐 Authentication
 - Secure user login and session handling with NextAuth.js.
 - Only logged-in users can access full blog content or create/edit posts.
+- User can login with Google and Github.
 
 ### ✍️ AI-Assisted Blog Creation
 - Auto-generate:
